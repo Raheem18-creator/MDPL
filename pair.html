@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAIR CODE</title>
+    <link rel="website icon" type="jpg" href="megalodon.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Basic Page Setup */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: url('https://files.catbox.moe/aq881d.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Semi-transparent container */
+    .body-frame {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      z-index: 1;
+    }
+
+    /* Title Styling */
+    .body-frame h3 {
+      font-size: 2.5rem;
+      color: #ff0000;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .body-frame h6 {
+      font-size: 1rem;
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    /* Text input and button container */
+    .input-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-container input {
+      width: 70%;
+      padding: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      color: #fff;
+      background-color: #222;
+      box-shadow: inset 0 0 10px #ff0000;
+      transition: all 0.3s ease;
+    }
+
+    .input-container input:focus {
+      background-color: #111;
+      color: #ffcc00;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    .input-container button {
+      padding: 12px 20px;
+      background-color: #ff0000;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px;
+      border: 2px solid #ff0000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .input-container button:hover {
+      background-color: #cc0000;
+      border-color: #cc0000;
+      color: #000;
+    }
+
+    .centered-text {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    #waiting-message {
+      display: none;
+      color: #ffcc00;
+      font-size: 1.1rem;
+    }
+
+    #pair {
+      font-size: 1.2rem;
+      color: #ffcc00;
+    }
+
+    audio {
+      display: none;
+    }
+
+    /* Neon Placeholder Glow */
+    ::placeholder {
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ffcc00;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 500px) {
+      .body-frame {
+        padding: 20px;
+      }
+
+      .input-container input, .input-container button {
+        padding: 10px;
+        font-size: 1rem;
+      }
+
+      .body-frame h3 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="body-frame">
+    <h3>RAHEEM XMD-3-PAIR-CODE</h3>
+    <h6>MADE BY RAHEEM-CM</h6>
+    <p class="centered-text">Enter your phone number with country code.</p>
+
+    <div class="input-container">
+      <input placeholder="2557XXXXX" type="number" id="number" name="">
+      <button id="submit">Submit</button>
+    </div>
+
+    <a id="waiting-message" class="centered-text">Please wait a while...</a>
+    <main id="pair"></main>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/2yvmq5.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+    let box = document.getElementById("box");
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      obj.size = "5";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:white;font-weight-bold";
+        obj.size = "5";
+      }, 500);
+    }
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with Country Code</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Number</a><br><br>';
+      } else {
+        const Venocyber_Tech = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = Venocyber_Tech.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style = "color:black;font-size:20px";
+        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
+        let { data } = await axios(`/code?number=${Venocyber_Tech}`);
+        let code = data.code || "Service Unavailable";
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+      }
+    });
+  </script>
+</body>
+</html>
